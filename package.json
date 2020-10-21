@@ -17,7 +17,7 @@
     "check-nodeJs-version": "node ./bin/checkNodeJsVersion.js",
     "checkDependencies": "node ./bin/checkDependencies.js",
     "before-run-check": "npm run check-nodeJs-version && npm run checkDependencies",
-    "codecheck": "npx eslint -c .eslintrc.json \"src/**/*.{js}\" --fix",
+    "codecheck": "",
     "start": "npm run before-run-check && node ./bin/start.js",
     "build": "npm run codecheck"
   },
