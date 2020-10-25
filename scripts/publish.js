@@ -9,8 +9,7 @@ if (version) {
   const execVersionTask = () =>
     execAsync(`npm version ${version} -m "chore: version %s"`, 'execVersionTask');
   const execNpmConfigTask = () => execAsync('npm config get registry', 'execNpmConfigTask');
-  const execPublishTask = () =>
-    execAsync(`npm publish --access=public dist --tag ${tag}`, 'npmRegistry');
+  const execPublishTask = () => execAsync(`npm publish --tag ${tag}`, 'npmRegistry');
   const execSyncTaoBaoTask = () =>
     execAsync('curl -X PUT https://npm.taobao.org/sync/koa2-ts-cli', 'execSyncTaoBaoTask');
   const execPushTagTask = () => execAsync('git push --follow-tags', 'execPushTagTask');
