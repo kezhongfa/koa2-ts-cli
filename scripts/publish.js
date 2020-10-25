@@ -1,44 +1,20 @@
 const shell = require('shelljs');
 const colors = require('colors');
-const fs = require('fs');
-const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 const { version, tag = 'latest' } = argv;
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 const execAsyncEndTasks = [];
 
 if (version) {
-  const execBuildTask = () => execAsync('npm run build', 'execBuildTask');
   const execVersionTask = () =>
     execAsync(`npm version ${version} -m "chore: version %s"`, 'execVersionTask');
-  const execPackageJsonTask = () => {
-    const packageJson = require('../package.json');
-    const pkg = JSON.parse(JSON.stringify(packageJson));
-    Reflect.deleteProperty(pkg, 'devDependencies');
-    Reflect.deleteProperty(pkg, 'husky');
-    Reflect.deleteProperty(pkg, 'scripts');
-    Reflect.deleteProperty(pkg, 'lint-staged');
-    const distPath = resolveApp('dist');
-    fs.writeFileSync(`${distPath}/package.json`, JSON.stringify(pkg, null, 2), {
-      encoding: 'utf-8',
-    });
-  };
-  const execCopyTask = () => {
-    shell.cp('src', 'dist');
-    shell.cp('bin', 'dist/bin');
-  };
   const execNpmConfigTask = () => execAsync('npm config get registry', 'execNpmConfigTask');
   const execPublishTask = () =>
     execAsync(`npm publish --access=public dist --tag ${tag}`, 'npmRegistry');
   const execSyncTaoBaoTask = () =>
     execAsync('curl -X PUT https://npm.taobao.org/sync/koa2-ts-cli', 'execSyncTaoBaoTask');
   const execPushTagTask = () => execAsync('git push --follow-tags', 'execPushTagTask');
-  execBuildTask()
-    .then(execVersionTask)
-    .then(execPackageJsonTask)
-    .then(execCopyTask)
+  execVersionTask()
     .then(execNpmConfigTask)
     .then(execPublishTask)
     .then(execSyncTaoBaoTask)
