@@ -28,6 +28,7 @@ module.exports = async (name) => {
   fs.copySync(tmpDir, distDir);
   console.log('We suggest that you begin by typing:\n');
   console.log(`cd ${projectName}`);
+  console.log('npm install');
   console.log('npm start');
   console.log('\nHappy hacking!');
   shell.rm('-rf', tmpRoot);

@@ -1,7 +1,7 @@
 const { version: VERSION } = require('../../package.json');
 
 // 项目模板列表
-const TEMPLATE_REPOLIST = ['koa-ts-base-template', 'koa-ts-full-template'];
+const TEMPLATE_REPOLIST = ['koa-ts-base-template'];
 
 // git 用户名
 const GIT_USER_NAME = 'kezhongfa';
