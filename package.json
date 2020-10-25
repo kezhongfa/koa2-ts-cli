@@ -8,7 +8,7 @@
     "ts",
     "koa-cli"
   ],
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
     "koa2ts": "./bin/www"
   },
@@ -43,8 +43,7 @@
     "lint-staged": "^10.4.0",
     "minimist": "^1.2.5",
     "prettier": "^2.1.2",
-    "rimraf": "^3.0.2",
-    "shelljs": "^0.8.4"
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -54,6 +53,7 @@
     "inquirer": "^7.3.3",
     "object-merge": "^2.5.1",
     "ora": "^5.1.0",
+    "shelljs": "^0.8.4",
     "tmp": "^0.2.1"
   }
 }
