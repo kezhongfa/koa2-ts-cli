@@ -8,17 +8,16 @@
     "ts",
     "koa-cli"
   ],
-  "main": "index.js",
-  "engines": {
-    "node": "^10.0.0 || ^12.0.0"
+  "main": "src/index.js",
+  "bin": {
+    "koa2ts": "./bin/www"
   },
   "scripts": {
     "clean": "rimraf ./dist",
-    "check-nodeJs-version": "node ./bin/checkNodeJsVersion.js",
     "checkDependencies": "node ./bin/checkDependencies.js",
-    "before-run-check": "npm run check-nodeJs-version && npm run checkDependencies",
+    "before-run-check": "npm run checkDependencies",
     "codecheck": "",
-    "start": "npm run before-run-check && node ./bin/start.js",
+    "start": "npm run before-run-check && node ./bin/www",
     "build": "npm run codecheck"
   },
   "husky": {
@@ -47,19 +46,21 @@
     "colors": "^1.4.0",
     "commitlint-config-fa": "^1.0.5",
     "compare-versions": "^3.6.0",
-    "cross-env": "^7.0.2",
-    "eslint-config-kzf": "0.0.14",
-    "fe-team-utils": "^1.0.14",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
     "minimist": "^1.2.5",
-    "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
-    "prompts": "^2.3.2",
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.4"
   },
   "dependencies": {
-    "commander": "^6.1.0"
+    "axios": "^0.21.0",
+    "commander": "^6.1.0",
+    "download-git-repo": "^3.0.2",
+    "fs-extra": "^9.0.1",
+    "inquirer": "^7.3.3",
+    "object-merge": "^2.5.1",
+    "ora": "^5.1.0",
+    "tmp": "^0.2.1"
   }
 }
